@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="pt-PT">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Meu Pedido | PertoJá – Serviços Locais Profissionais</title>
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+  <header>
+    <div class="logo">Perto<b>Já</b></div>
+    <nav class="menu-principal">
+      <a href="index.html">Início</a>
+      <a href="pedido.html" class="ativo">Meu Pedido</a>
+      <a href="como-funciona.html">Como Funciona</a>
+      <a href="sobre-nos.html">Sobre Nós</a>
+    </nav>
+  </header>
+
+  <section class="hero">
+    <h1>Acompanhe o seu serviço.</h1>
+    <p>Visualize a proximidade no mapa e acompanhe a chegada em tempo real com total segurança.</p>
+    <button class="btn" id="btnLoc">Utilizar minha localização</button>
+    <span id="locInfo" style="margin-left:10px;color:#cfe0ea;font-size:.9rem">Modo de demonstração ativado.</span>
+  </section>
+
+  <main>
+    <div id="aba-pedido" class="conteudo-aba" style="display: block;">
+      <div class="panel filters">
+        <div class="chips" id="chips" role="group" aria-label="Categorias"></div>
+        <label>Raio de busca: <input type="range" id="raio" min="1" max="12" value="8"> <span id="raioV">8 km</span></label>
+      </div>
+
+      <div class="grid">
+        <div class="panel">
+          <div id="painel-lista">
+            <h2>Selecionar Profissional <span id="count" class="meta" style="display:inline"></span></h2>
+            <div class="list" id="list"></div>
+          </div>
+
+          <div id="pedidoBox" hidden>
+            <h2>Monitorização em Tempo Real</h2>
+            <div class="steps" id="steps"></div>
+            <div id="info"></div>
+            <table id="rank"></table>
+            <div class="row">
+              <label><input type="checkbox" id="bat"> Modo de economia de bateria</label>
+              <span class="meta">Comunicações de rede: <b id="gps">0</b></span>
+              <button class="btn2" id="pay" hidden>Processar Pagamento</button>
+              <button class="btn" id="novo" hidden>Solicitar Novo Serviço</button>
+            </div>
+          </div>
+        </div>
+        
+        <div class="panel">
+          <h2>Mapeamento Geográfico</h2>
+          <div id="map" role="img" aria-label="Mapa com prestadores próximos"></div>
+          <p class="legend">Legenda: Azul (Sua Localização) · Verde (Disponível) · Cinza (Indisponível) · Amarelo (Prestador Designado)</p>
+        </div>
+      </div>
+    </div>
+  </main>
+  
+  <footer>PertoJá · Sistema de Demonstração Institucional · Todos os direitos reservados.</footer>
+  <div id="toasts" aria-live="polite"></div>
+
+  <script src="script.js"></script>
+</body>
+</html>

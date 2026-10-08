@@ -4,116 +4,20 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>PertoJá – Serviços Locais Profissionais</title>
-
+  <title>Início | PertoJá – Serviços Locais Profissionais</title>
   <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
   <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
-
-  <style>
-    :root{--ink:#10243e;--sea:#1f6f8b;--sun:#ffc233;--bg:#f1f5f7;--road:#dce5ea;--ok:#1a8f5a;--card:#fff}
-    *{box-sizing:border-box;margin:0}
-
-    body{font-family:"Segoe UI",system-ui,sans-serif;background:var(--bg);color:var(--ink);line-height:1.5}
-    
-    header{ background:var(--ink); color:#fff; padding:16px 5%; display:flex; justify-content:space-between; align-items:center; gap:16px; flex-wrap:wrap; border-bottom: 4px solid var(--sea); }
-    .logo{font-weight:800;font-size:1.6rem;letter-spacing:-.5px}.logo b{color:var(--sun)}
-    
-    .menu-principal { display: flex; gap: 10px; flex-wrap: wrap; }
-    .menu-principal a { color: #cfe0ea; text-decoration: none; font-size: 0.95rem; font-weight: 600; cursor: pointer; padding: 8px 18px; border-radius: 25px; background-color: rgba(255, 255, 255, 0.08); display: flex; align-items: center; gap: 6px; transition: all 0.3s ease; }
-    .menu-principal a:hover, .menu-principal a:focus-visible { background-color: rgba(255, 255, 255, 0.18); color: #fff; transform: translateY(-2px); }
-    .menu-principal a.ativo { background-color: var(--sun); color: var(--ink); box-shadow: 0 4px 12px rgba(255, 194, 51, 0.25); transform: none; }
-
-    .hero{background:var(--ink);color:#fff;padding:28px 5% 40px}
-    .hero h1{font-size:clamp(1.7rem,4.2vw,2.8rem);line-height:1.1;max-width:20ch;font-weight:800}
-    .hero p{margin:12px 0 20px;max-width:55ch;color:#cfe0ea}
-
-    button{font:inherit;cursor:pointer;border:0;border-radius:8px;padding:10px 16px;font-weight:700}
-    button:focus-visible,input:focus-visible{outline:3px solid var(--sun);outline-offset:2px}
-    .btn{background:var(--sun);color:var(--ink)}.btn:hover{filter:brightness(.95)}
-    .btn2{background:var(--sea);color:#fff}
-    button:disabled{opacity:.45;cursor:not-allowed}
-
-    main{padding:0 5% 40px;max-width:1200px;margin:-22px auto 0}
-    .panel{background:var(--card);border-radius:12px;padding:18px;box-shadow:0 2px 10px rgba(16,36,62,.08);margin-bottom:20px}
-    .panel h2{font-size:1.15rem;margin-bottom:10px}
-    .filters{display:flex;flex-wrap:wrap;gap:14px;align-items:center}
-    .chips{display:flex;flex-wrap:wrap;gap:8px}
-    .chip{background:var(--bg);color:var(--ink);border:2px solid transparent}
-    .chip.on{background:var(--ink);color:#fff}
-
-    label{font-size:.9rem;font-weight:600}
-    input[type=range]{accent-color:var(--sea);vertical-align:middle}
-    .grid{display:grid;grid-template-columns:1.1fr 1fr;gap:20px}
-
-    @media(max-width:850px){.grid{grid-template-columns:1fr}}
-    .list{display:grid;gap:12px;max-height:560px;overflow:auto;padding-right:4px}
-    .svc{border:1px solid var(--road);border-radius:10px;padding:12px 14px;display:grid;gap:4px}
-    .svc.best{border:2px solid var(--sun);background:#fffbee}
-    .svc .top{display:flex;justify-content:space-between;gap:8px;font-weight:700}
-    .meta{font-size:.88rem;color:#4b6073;display:flex;gap:12px;flex-wrap:wrap}
-    .tag{font-size:.78rem;padding:2px 8px;border-radius:99px;background:#e3f4ec;color:var(--ok);font-weight:700}
-    .tag.off{background:#eee;color:#777}
-    .price{color:var(--sea)}
-
-    #map { width:100%; height:420px; border-radius:10px; background:#eaf0f3; display:block; z-index: 1; border: 1px solid var(--road); }
-    
-    .legend{font-size:.82rem;color:#4b6073;margin-top:8px}
-    .steps{display:flex;flex-wrap:wrap;gap:6px;margin:10px 0}
-    .step{font-size:.82rem;padding:5px 10px;border-radius:99px;background:var(--bg);color:#6a7d8c;font-weight:600}
-    .step.done{background:var(--ink);color:#fff}.step.now{background:var(--sun);color:var(--ink)}
-
-    table{width:100%;border-collapse:collapse;font-size:.88rem;margin-top:8px}
-    td,th{padding:5px 6px;border-bottom:1px solid var(--road);text-align:left}
-    tr.win td{font-weight:800;background:#fffbee}
-    .row{display:flex;gap:12px;flex-wrap:wrap;align-items:center;margin-top:10px}
-    #toasts{position:fixed;right:16px;bottom:16px;display:grid;gap:8px;z-index:9;max-width:min(92vw,340px)}
-    .toast{background:var(--ink);color:#fff;padding:10px 14px;border-radius:8px;border-left:5px solid var(--sun);font-size:.9rem;box-shadow:0 4px 14px rgba(0,0,0,.25)}
-
-    footer{text-align:center;color:#5b6f80;font-size:.85rem;padding:0 5% 30px}
-    @media(prefers-reduced-motion:no-preference){.toast{animation:in .25s}@keyframes in{from{transform:translateY(10px);opacity:0}}}
-    .map-label { background: transparent; border: none; box-shadow: none; font-weight: 700; color: var(--ink); text-shadow: 1px 1px 2px #fff; }
-
-    .conteudo-aba { display: none; animation: fadeInAba 0.4s; }
-    @keyframes fadeInAba { from { opacity: 0; transform: scale(0.98); } to { opacity: 1; transform: scale(1); } }
-
-    .grid-home { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 20px; margin-top: 20px; }
-
-    @keyframes surgirCard { from { opacity: 0; transform: translateY(30px); } to { opacity: 1; transform: translateY(0); } }
-
-    .card-home { background: var(--bg); border-radius: 12px; border: 1px solid var(--road); overflow: hidden; transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1); opacity: 0; animation: surgirCard 0.6s ease-out forwards; }
-    .card-home:hover { border-color: var(--sea); box-shadow: 0 10px 25px rgba(31,111,139,.15); transform: translateY(-6px); }
-    .card-home.clicavel { cursor: pointer; }
-
-    .img-servico { width: 100%; height: 150px; object-fit: cover; transition: transform 0.5s ease; }
-    .card-home:hover .img-servico { transform: scale(1.08); }
-
-    .card-texto { padding: 20px; background: var(--bg); position: relative; }
-    .card-texto h3 { color: var(--sea); margin-bottom: 8px; font-size: 1.15rem; }
-    .card-texto p { font-size: 0.9rem; color: #4b6073; }
-
-    .grid-home > .card-home:nth-child(1) { animation-delay: 0.0s; }
-    .grid-home > .card-home:nth-child(2) { animation-delay: 0.1s; }
-    .grid-home > .card-home:nth-child(3) { animation-delay: 0.2s; }
-    .grid-home > .card-home:nth-child(4) { animation-delay: 0.3s; }
-    .grid-home > .card-home:nth-child(5) { animation-delay: 0.4s; }
-    .grid-home > .card-home:nth-child(6) { animation-delay: 0.5s; }
-    .grid-home > .card-home:nth-child(7) { animation-delay: 0.6s; }
-    
-    /* Estilos para a nova aba Sobre Nós */
-    .texto-institucional p { margin-bottom: 15px; color: #4b6073; line-height: 1.6; }
-    .texto-institucional h3 { color: var(--sea); margin-top: 25px; margin-bottom: 10px; font-size: 1.2rem; }
-  </style>
+  <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
   <header>
     <div class="logo">Perto<b>Já</b></div>
     <nav class="menu-principal">
-      <a onclick="abrirAba('aba-servicos', this)" class="ativo">Início</a>
-      <a onclick="abrirAba('aba-pedido', this)">Meu Pedido</a>
-      <a onclick="abrirAba('aba-como', this)">Como Funciona</a>
-      <!-- NOVIDADE HTML: Adição do link para a nova aba institucional -->
-      <a onclick="abrirAba('aba-sobre', this)">Sobre Nós</a>
+      <a href="index.html" class="ativo">Início</a>
+      <a href="pedido.html">Meu Pedido</a>
+      <a href="como-funciona.html">Como Funciona</a>
+      <a href="sobre-nos.html">Sobre Nós</a>
     </nav>
   </header>
 
@@ -125,7 +29,6 @@
   </section>
 
   <main>
-    <!-- ABA 1: INÍCIO -->
     <div id="aba-servicos" class="conteudo-aba" style="display: block;">
       <div class="panel">
         <h2>Profissionais em Destaque</h2>
@@ -136,9 +39,8 @@
       <div class="panel">
         <h2>Catálogo de Serviços</h2>
         <p>Selecione uma das categorias abaixo para encontrar profissionais disponíveis na sua região.</p>
-        
         <div class="grid-home">
-          <!-- NOVIDADE HTML: Emojis removidos e imagens atualizadas para um tom mais corporativo -->
+          <!-- Os links onclick("irParaCategoria") precisarão ser ajustados no seu JS para redirecionar para pedido.html -->
           <div class="card-home clicavel" onclick="irParaCategoria('Limpeza')">
             <img src="https://images.unsplash.com/photo-1584622650111-993a426fbf0a?auto=format&fit=crop&w=400&q=80" alt="Limpeza Profissional" class="img-servico">
             <div class="card-texto">
@@ -197,276 +99,11 @@
         </div>
       </div>
     </div>
-
-    <!-- ABA 2: MEU PEDIDO -->
-    <div id="aba-pedido" class="conteudo-aba">
-      <div class="panel filters">
-        <div class="chips" id="chips" role="group" aria-label="Categorias"></div>
-        <label>Raio de busca: <input type="range" id="raio" min="1" max="12" value="8"> <span id="raioV">8 km</span></label>
-      </div>
-
-      <div class="grid">
-        <div class="panel">
-          <div id="painel-lista">
-            <h2>Selecionar Profissional <span id="count" class="meta" style="display:inline"></span></h2>
-            <div class="list" id="list"></div>
-          </div>
-
-          <div id="pedidoBox" hidden>
-            <h2>Monitorização em Tempo Real</h2>
-            <div class="steps" id="steps"></div>
-            <div id="info"></div>
-            <table id="rank"></table>
-            <div class="row">
-              <label><input type="checkbox" id="bat"> Modo de economia de bateria</label>
-              <span class="meta">Comunicações de rede: <b id="gps">0</b></span>
-              <button class="btn2" id="pay" hidden>Processar Pagamento</button>
-              <button class="btn" id="novo" hidden>Solicitar Novo Serviço</button>
-            </div>
-          </div>
-        </div>
-        
-        <div class="panel">
-          <h2>Mapeamento Geográfico</h2>
-          <div id="map" role="img" aria-label="Mapa com prestadores próximos"></div>
-          <p class="legend">Legenda: Azul (Sua Localização) · Verde (Disponível) · Cinza (Indisponível) · Amarelo (Prestador Designado)</p>
-        </div>
-      </div>
-    </div>
-
-    <!-- ABA 3: COMO FUNCIONA -->
-    <div id="aba-como" class="conteudo-aba">
-      <div class="panel texto-institucional">
-        <h2>Metodologia de Operação</h2>
-        <p>Nossa plataforma foi desenhada para conectar necessidades locais a soluções imediatas, utilizando tecnologia geoespacial de precisão.</p>
-        
-        <h3>1. Identificação Geográfica</h3>
-        <p>Através da permissão concedida em seu navegador, o sistema identifica suas coordenadas exatas (via GPS ou rede) para estabelecer o ponto central de busca.</p>
-        
-        <h3>2. Análise de Disponibilidade</h3>
-        <p>O algoritmo cruza os dados do raio de proximidade estabelecido pelo usuário com a disponibilidade e o histórico de avaliações dos profissionais homologados.</p>
-        
-        <h3>3. Designação e Acompanhamento</h3>
-        <p>Ao selecionar um profissional, o sistema estabelece comunicação imediata. Após o aceite, a interface de rastreamento é ativada, permitindo monitorizar a rota de deslocamento em tempo real até o seu local.</p>
-      </div>
-    </div>
-
-    <!-- NOVIDADE HTML: ABA 4: SOBRE NÓS -->
-    <div id="aba-sobre" class="conteudo-aba">
-      <div class="panel texto-institucional">
-        <h2>Sobre a PertoJá</h2>
-        <p>A PertoJá é uma solução tecnológica focada na otimização da prestação de serviços locais. Fundada com o propósito de modernizar a contratação de mão de obra qualificada, a nossa missão é garantir segurança, rapidez e transparência em todas as interações.</p>
-        
-        <h3>A Nossa Missão</h3>
-        <p>Fornecer infraestrutura digital de ponta para conectar profissionais independentes a clientes que buscam excelência, fomentando a economia local através de tecnologia acessível.</p>
-        
-        <h3>Padrões de Qualidade</h3>
-        <p>Todos os prestadores de serviço integrados na nossa plataforma passam por um rigoroso processo de verificação documental e avaliação contínua por parte da comunidade de usuários, assegurando um ecossistema de confiança mútua.</p>
-        
-        <h3>Compromisso Tecnológico</h3>
-        <p>Utilizamos sistemas avançados de roteamento e mapeamento satélite para minimizar o tempo de espera e maximizar a eficiência logística de cada solicitação de serviço registrada.</p>
-      </div>
-    </div>
   </main>
   
   <footer>PertoJá · Sistema de Demonstração Institucional · Todos os direitos reservados.</footer>
   <div id="toasts" aria-live="polite"></div>
 
-<script>
-// Função atualizada para lidar corretamente com a nova aba institucional
-function abrirAba(idAba, elementoClicado) {
-  const todasAbas = document.querySelectorAll('.conteudo-aba');
-  todasAbas.forEach(aba => { aba.style.display = 'none'; });
-
-  const todosLinks = document.querySelectorAll('header nav a');
-  todosLinks.forEach(link => { link.classList.remove('ativo'); });
-
-  document.getElementById(idAba).style.display = 'block';
-
-  if(elementoClicado) { elementoClicado.classList.add('ativo'); }
-
-  if(idAba === 'aba-pedido') {
-    setTimeout(() => { mapInstance.invalidateSize(); }, 10);
-  }
-}
-
-let centerLat = -23.4628;
-let centerLng = -46.5333;
-
-const mapInstance = L.map('map').setView([centerLat, centerLng], 13);
-
-L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}', {
-    attribution: 'Dados geoespaciais &copy; Esri'
-}).addTo(mapInstance);
-
-const layerMarkers = L.layerGroup().addTo(mapInstance);
-
-const P = [
- {id:1,n:'Carlos Mendes',s:'Limpeza residencial',c:'Limpeza',p:150,r:4.8,x:1.2,y:-0.8,a:true},
- {id:2,n:'Marta Souza',s:'Faxina pesada',c:'Limpeza',p:220,r:4.5,x:-3.5,y:2.1,a:true},
- {id:3,n:'João Volts',s:'Reparo elétrico',c:'Elétrica',p:180,r:4.9,x:4.2,y:3.0,a:true},
- {id:4,n:'Rafa Instalações',s:'Troca de chuveiro',c:'Elétrica',p:120,r:4.2,x:-1.0,y:-1.5,a:true},
- {id:5,n:'Beto Hidráulica',s:'Conserto vazamentos',c:'Encanamento',p:200,r:4.7,x:2.8,y:-4.4,a:true},
- {id:6,n:'Lia Cores',s:'Pintura de paredes',c:'Pintura',p:350,r:4.6,x:-6.0,y:-2.0,a:true},
- {id:7,n:'Dona Flor',s:'Jardinagem e poda',c:'Jardinagem',p:130,r:5.0,x:8.5,y:5.0,a:true},
- {id:8,n:'Téo Suporte',s:'Suporte informático',c:'Tecnologia',p:160,r:4.4,x:0.6,y:2.4,a:false},
- {id:9,n:'Nina Montagens',s:'Montagem de móveis',c:'Montagem',p:140,r:4.3,x:-4.8,y:-3.6,a:true}
-];
-
-P.forEach(p => {
-    p.lat = centerLat + (p.y * -0.009);
-    p.lng = centerLng + (p.x * 0.009);
-});
-
-const $ = s => document.querySelector(s);
-const brl = v => v.toLocaleString('pt-PT',{style:'currency',currency:'EUR'});
-const dist = p => mapInstance.distance([centerLat, centerLng], [p.lat, p.lng]) / 1000;
-const score = p => 1000*(1-Math.min(dist(p)/10,1)) + p.r*100 + (p.a?200:0);
-const STEPS = ['Requisitado','Localizado','Confirmado','Em Trânsito','Em Execução','Finalizado'];
-let cat = 'Todos', radius = 8, busy = false, order = null, timer = null;
-
-function toast(t){
-  const d=document.createElement('div');
-  d.className='toast'; d.textContent=t;
-  $('#toasts').append(d); setTimeout(()=>d.remove(),4500); 
-}
-
-function visible(){ return P.filter(p=>dist(p)<=radius&&(cat==='Todos'||p.c===cat)); }
-
-function renderChips(){
-  const cats=['Todos',...new Set(P.map(p=>p.c))];
-  $('#chips').innerHTML=cats.map(c=>`<button class="chip ${c===cat?'on':''}" data-c="${c}">${c}</button>`).join('');
-}
-
-function renderList(){
-  const v=visible().sort((a,b)=>dist(a)-dist(b));
-  $('#count').textContent='('+v.length+')';
-  $('#list').innerHTML=v.length?v.map(p=>`
-   <div class="svc ${order&&order.best.id===p.id?'best':''}">
-     <div class="top"><span>${p.s}</span><span class="price">${brl(p.p)}</span></div>
-     <div class="meta"><span>${p.n}</span><span>Avaliação: ${p.r.toFixed(1)}</span><span>${dist(p).toFixed(1)} km</span>
-       <span class="tag ${p.a?'':'off'}">${p.a?'Disponível':'Indisponível'}</span></div>
-     <div><button class="btn" data-req="${p.id}" ${(!p.a||busy)?'disabled':''}>Requisitar</button></div>
-   </div>`).join(''):'<p>Nenhum prestador de serviços homologado neste raio de abrangência.</p>';
-}
-
-function renderMap(posAtual){
-  layerMarkers.clearLayers(); 
-  L.circle([centerLat, centerLng], { radius: radius * 1000, color: '#1f6f8b', fillOpacity: 0.07, weight: 2 }).addTo(layerMarkers);
-  
-  // Atualização textual no balão do mapa
-  L.circleMarker([centerLat, centerLng], { radius: 9, color: '#fff', fillColor: '#1f6f8b', fillOpacity: 1, weight: 3 }).bindTooltip("Localização", {permanent: true, direction: 'right', className: 'map-label'}).addTo(layerMarkers);
-
-  visible().forEach(p => {
-    const isBest = order && order.best.id === p.id;
-    if (isBest && posAtual) return; 
-    let color = isBest ? '#ffc233' : p.a ? '#1a8f5a' : '#9aa7b1'; 
-    L.circleMarker([p.lat, p.lng], { radius: isBest ? 10 : 7, color: '#10243e', fillColor: color, fillOpacity: 1, weight: isBest ? 3 : 1.5 }).bindTooltip(p.n.split(' ')[0], {permanent: true, direction: 'right', className: 'map-label'}).addTo(layerMarkers);
-  });
-
-  if(order && posAtual){
-    L.polyline([[posAtual.lat, posAtual.lng], [centerLat, centerLng]], { color: '#ffc233', dashArray: '6, 6', weight: 3 }).addTo(layerMarkers);
-    L.circleMarker([posAtual.lat, posAtual.lng], { radius: 11, color: '#10243e', fillColor: '#ffc233', fillOpacity: 1, weight: 3 }).bindTooltip(order.best.n.split(' ')[0], {permanent: true, direction: 'right', className: 'map-label'}).addTo(layerMarkers);
-  }
-}
-
-function renderSteps(i){$('#steps').innerHTML=STEPS.map((t,k)=>`<span class="step ${k<i?'done':k===i?'now':''}">${t}</span>`).join('')}
-
-function request(id){
-  const sel=P.find(p=>p.id===id);
-  const cands=P.filter(p=>p.c===sel.c&&p.a&&dist(p)<=radius).map(p=>({p,score:score(p)})).sort((a,b)=>b.score-a.score);
-  if(!cands.length){toast('Prestador indisponível no momento.');return}
-  busy=true; 
-  const best=cands[0].p;
-  order={best, pos:{lat: best.lat, lng: best.lng}, gps:0};
-  best.a=false; 
-  $('#painel-lista').hidden = true; $('#pedidoBox').hidden = false; $('#pay').hidden = true; $('#novo').hidden = true; $('#gps').textContent = 0;
-  $('#rank').innerHTML='<tr><th>Profissional</th><th>Distância</th><th>Classificação</th><th>Índice</th></tr>'+cands.map((c,i)=>`<tr class="${i?'':'win'}"><td>${c.p.n}</td><td>${dist(c.p).toFixed(1)} km</td><td>${c.p.r.toFixed(1)}</td><td>${Math.round(c.score)}</td></tr>`).join('');
-  renderSteps(0);renderAll();
-  info('Processando busca para o serviço de <b>'+sel.s+'</b>…');
-  setTimeout(()=>{renderSteps(1);info('Atribuição: <b>'+best.n+'</b> a '+dist(best).toFixed(1)+' km (Classificação '+best.r.toFixed(1)+').');toast('A notificar as partes envolvidas.')},900);
-  setTimeout(()=>{renderSteps(2);toast(best.n+' confirmou o atendimento.')},2200);
-  setTimeout(()=>{renderSteps(3);toast(best.n+' iniciou o deslocamento.'); drive(best) },3300);
-}
-
-function info(h){$('#info').innerHTML='<p>'+h+'</p>'}
-
-function drive(best){
-  const n=6; let k=0;
-  const tick=()=>{
-    k++; order.gps++; $('#gps').textContent=order.gps;
-    const f=k/n; 
-    order.pos={ lat: best.lat * (1-f) + centerLat * f, lng: best.lng * (1-f) + centerLng * f };
-    const left = mapInstance.distance([order.pos.lat, order.pos.lng], [centerLat, centerLng]) / 1000;
-    info(left>0.05 ? 'O profissional encontra-se a <b>'+left.toFixed(1)+' km</b> de distância · Estimativa: '+Math.max(1,Math.round(left*3))+' minutos.' : 'O profissional chegou ao destino.');
-    renderMap(order.pos); 
-    if(k<n){ timer=setTimeout(tick,$('#bat').checked?2500:1000) } else arrive();
-  };
-  timer=setTimeout(tick,1000);
-}
-
-function arrive(){
-  toast('O profissional chegou ao local do serviço.');renderSteps(4);
-  setTimeout(()=>{renderSteps(5);info('Ordem de serviço concluída. Prossiga com o encerramento financeiro.');toast('Serviço finalizado.');$('#pay').hidden=false;$('#novo').hidden=false},2500);
-}
-
-function renderAll(){renderList();renderMap(order&&order.pos)}
-
-$('#chips').onclick=e=>{const c=e.target.dataset.c;if(!c)return;cat=c;renderChips();renderAll()};
-$('#raio').oninput=e=>{ radius=+e.target.value; $('#raioV').textContent=radius+' km'; mapInstance.setZoom(radius > 8 ? 12 : (radius < 4 ? 14 : 13)); renderAll() };
-$('#list').onclick=e=>{const id=e.target.dataset.req;if(id&&!busy)request(+id)};
-$('#pay').onclick=()=>{$('#pay').hidden=true;toast('Transação processada.');info('Obrigado. O pagamento foi registado no sistema.')};
-
-$('#novo').onclick=()=>{
-  clearTimeout(timer);P.forEach(p=>p.a=p.id!==8);busy=false;order=null;
-  $('#pedidoBox').hidden=true; $('#painel-lista').hidden=false; renderAll();
-};
-
-$('#btnLoc').onclick = () => {
-  if(!navigator.geolocation){ toast('O navegador atual não suporta serviços de geolocalização.'); return; }
-  $('#locInfo').textContent = 'Estabelecendo conexão com satélites...';
-  navigator.geolocation.getCurrentPosition(
-    (g) => {
-        centerLat = g.coords.latitude; centerLng = g.coords.longitude;
-        mapInstance.setView([centerLat, centerLng], 14);
-        P.forEach(p => { p.lat = centerLat + (p.y * -0.009); p.lng = centerLng + (p.x * 0.009); });
-        renderAll(); $('#locInfo').textContent = 'Coordenadas obtidas com margem de erro de ±' + Math.round(g.coords.accuracy) + ' metros.'; toast('Posicionamento estabelecido.');
-    },
-    (erro) => {
-        let motivo = erro.code === erro.PERMISSION_DENIED ? "Acesso restrito pelo utilizador." : "Comunicação falhou (Timeout/Rede).";
-        $('#locInfo').textContent = 'Erro: ' + motivo; toast('Operação cancelada: ' + motivo);
-    },
-    { enableHighAccuracy: false, timeout: 15000, maximumAge: 0 }
-  );
-};
-
-// A função de direcionamento precisa aceder ao índice [1] correspondente a 'Meu Pedido'
-function irParaCategoria(categoriaSelecionada) {
-    cat = categoriaSelecionada; 
-    renderChips();              
-    renderAll();                
-    const linksNav = document.querySelectorAll('.menu-principal a');
-    abrirAba('aba-pedido', linksNav[1]);
-}
-
-// NOVIDADE JAVASCRIPT: Emojis removidos e layout de destaque atualizado para padrão corporativo
-function renderDestaques() {
-    const top3 = [...P].sort((a, b) => b.r - a.r).slice(0, 3);
-    document.getElementById('destaques-home').innerHTML = top3.map((p, index) => `
-        <div class="card-home" style="cursor: default; animation-delay: ${index * 0.1}s;">
-            <div class="card-texto" style="text-align: center;">
-                <div style="font-size: 0.85rem; font-weight: 800; color: var(--sun); letter-spacing: 1.5px; text-transform: uppercase; margin-bottom: 12px;">Destaque</div>
-                <h3 style="color: var(--ink); margin-bottom: 4px;">${p.n}</h3>
-                <p style="color: var(--sea); font-weight: bold; margin-bottom: 8px;">${p.c}</p>
-                <p style="font-size: 0.9rem; color: #4b6073;">Índice de Qualidade: <b style="color: var(--ink);">${p.r.toFixed(1)}</b> / 5.0</p>
-            </div>
-        </div>
-    `).join('');
-}
-
-renderChips();
-renderAll();
-renderDestaques(); 
-</script>
+  <script src="script.js"></script>
 </body>
 </html>
