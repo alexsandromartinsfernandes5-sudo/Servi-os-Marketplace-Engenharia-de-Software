@@ -6,21 +6,21 @@
     --road: #dce5ea;
     --ok: #1a8f5a;
     --card: #fff;
-  }
-  
-  * {
+}
+
+* {
     box-sizing: border-box;
     margin: 0;
-  }
-  
-  body {
+}
+
+body {
     font-family: "Segoe UI", system-ui, sans-serif;
     background: var(--bg);
     color: var(--ink);
     line-height: 1.5;
-  }
-  
-  header {
+}
+
+header {
     background: var(--ink);
     color: #fff;
     padding: 16px 5%;
@@ -30,25 +30,25 @@
     gap: 16px;
     flex-wrap: wrap;
     border-bottom: 4px solid var(--sea);
-  }
-  
-  .logo {
+}
+
+.logo {
     font-weight: 800;
     font-size: 1.6rem;
     letter-spacing: -.5px;
-  }
-  
-  .logo b {
+}
+
+.logo b {
     color: var(--sun);
-  }
-  
-  .menu-principal {
+}
+
+.menu-principal {
     display: flex;
     gap: 10px;
     flex-wrap: wrap;
-  }
-  
-  .menu-principal a {
+}
+
+.menu-principal a {
     color: #cfe0ea;
     text-decoration: none;
     font-size: 0.95rem;
@@ -61,195 +61,195 @@
     align-items: center;
     gap: 6px;
     transition: all 0.3s ease;
-  }
-  
-  .menu-principal a:hover,
-  .menu-principal a:focus-visible {
+}
+
+.menu-principal a:hover,
+.menu-principal a:focus-visible {
     background-color: rgba(255, 255, 255, 0.18);
     color: #fff;
     transform: translateY(-2px);
-  }
-  
-  .menu-principal a.ativo {
+}
+
+.menu-principal a.ativo {
     background-color: var(--sun);
     color: var(--ink);
     box-shadow: 0 4px 12px rgba(255, 194, 51, 0.25);
     transform: none;
-  }
-  
-  .hero {
+}
+
+.hero {
     background: var(--ink);
     color: #fff;
     padding: 28px 5% 40px;
-  }
-  
-  .hero h1 {
+}
+
+.hero h1 {
     font-size: clamp(1.7rem, 4.2vw, 2.8rem);
     line-height: 1.1;
     max-width: 20ch;
     font-weight: 800;
-  }
-  
-  .hero p {
+}
+
+.hero p {
     margin: 12px 0 20px;
     max-width: 55ch;
     color: #cfe0ea;
-  }
-  
-  button {
+}
+
+button {
     font: inherit;
     cursor: pointer;
     border: 0;
     border-radius: 8px;
     padding: 10px 16px;
     font-weight: 700;
-  }
-  
-  button:focus-visible,
-  input:focus-visible {
+}
+
+button:focus-visible,
+input:focus-visible {
     outline: 3px solid var(--sun);
     outline-offset: 2px;
-  }
-  
-  .btn {
+}
+
+.btn {
     background: var(--sun);
     color: var(--ink);
-  }
-  
-  .btn:hover {
+}
+
+.btn:hover {
     filter: brightness(.95);
-  }
-  
-  .btn2 {
+}
+
+.btn2 {
     background: var(--sea);
     color: #fff;
-  }
-  
-  button:disabled {
+}
+
+button:disabled {
     opacity: .45;
     cursor: not-allowed;
-  }
-  
-  main {
+}
+
+main {
     padding: 0 5% 40px;
     max-width: 1200px;
     margin: -22px auto 0;
-  }
-  
-  .panel {
+}
+
+.panel {
     background: var(--card);
     border-radius: 12px;
     padding: 18px;
     box-shadow: 0 2px 10px rgba(16, 36, 62, .08);
     margin-bottom: 20px;
-  }
-  
-  .panel h2 {
+}
+
+.panel h2 {
     font-size: 1.15rem;
     margin-bottom: 10px;
-  }
-  
-  .filters {
+}
+
+.filters {
     display: flex;
     flex-wrap: wrap;
     gap: 14px;
     align-items: center;
-  }
-  
-  .chips {
+}
+
+.chips {
     display: flex;
     flex-wrap: wrap;
     gap: 8px;
-  }
-  
-  .chip {
+}
+
+.chip {
     background: var(--bg);
     color: var(--ink);
     border: 2px solid transparent;
-  }
-  
-  .chip.on {
+}
+
+.chip.on {
     background: var(--ink);
     color: #fff;
-  }
-  
-  label {
+}
+
+label {
     font-size: .9rem;
     font-weight: 600;
-  }
-  
-  input[type=range] {
+}
+
+input[type=range] {
     accent-color: var(--sea);
     vertical-align: middle;
-  }
-  
-  .grid {
+}
+
+.grid {
     display: grid;
     grid-template-columns: 1.1fr 1fr;
     gap: 20px;
-  }
-  
-  @media (max-width: 850px) {
+}
+
+@media (max-width: 850px) {
     .grid {
-      grid-template-columns: 1fr;
+        grid-template-columns: 1fr;
     }
-  }
-  
-  .list {
+}
+
+.list {
     display: grid;
     gap: 12px;
     max-height: 560px;
     overflow: auto;
     padding-right: 4px;
-  }
-  
-  .svc {
+}
+
+.svc {
     border: 1px solid var(--road);
     border-radius: 10px;
     padding: 12px 14px;
     display: grid;
     gap: 4px;
-  }
-  
-  .svc.best {
+}
+
+.svc.best {
     border: 2px solid var(--sun);
     background: #fffbee;
-  }
-  
-  .svc .top {
+}
+
+.svc .top {
     display: flex;
     justify-content: space-between;
     gap: 8px;
     font-weight: 700;
-  }
-  
-  .meta {
+}
+
+.meta {
     font-size: .88rem;
     color: #4b6073;
     display: flex;
     gap: 12px;
     flex-wrap: wrap;
-  }
-  
-  .tag {
+}
+
+.tag {
     font-size: .78rem;
     padding: 2px 8px;
     border-radius: 99px;
     background: #e3f4ec;
     color: var(--ok);
     font-weight: 700;
-  }
-  
-  .tag.off {
+}
+
+.tag.off {
     background: #eee;
     color: #777;
-  }
-  
-  .price {
+}
+
+.price {
     color: var(--sea);
-  }
-  
-  #map {
+}
+
+#map {
     width: 100%;
     height: 420px;
     border-radius: 10px;
@@ -257,68 +257,68 @@
     display: block;
     z-index: 1;
     border: 1px solid var(--road);
-  }
-  
-  .legend {
+}
+
+.legend {
     font-size: .82rem;
     color: #4b6073;
     margin-top: 8px;
-  }
-  
-  .steps {
+}
+
+.steps {
     display: flex;
     flex-wrap: wrap;
     gap: 6px;
     margin: 10px 0;
-  }
-  
-  .step {
+}
+
+.step {
     font-size: .82rem;
     padding: 5px 10px;
     border-radius: 99px;
     background: var(--bg);
     color: #6a7d8c;
     font-weight: 600;
-  }
-  
-  .step.done {
+}
+
+.step.done {
     background: var(--ink);
     color: #fff;
-  }
-  
-  .step.now {
+}
+
+.step.now {
     background: var(--sun);
     color: var(--ink);
-  }
-  
-  table {
+}
+
+table {
     width: 100%;
     border-collapse: collapse;
     font-size: .88rem;
     margin-top: 8px;
-  }
-  
-  td,
-  th {
+}
+
+td,
+th {
     padding: 5px 6px;
     border-bottom: 1px solid var(--road);
     text-align: left;
-  }
-  
-  tr.win td {
+}
+
+tr.win td {
     font-weight: 800;
     background: #fffbee;
-  }
-  
-  .row {
+}
+
+.row {
     display: flex;
     gap: 12px;
     flex-wrap: wrap;
     align-items: center;
     margin-top: 10px;
-  }
-  
-  #toasts {
+}
+
+#toasts {
     position: fixed;
     right: 16px;
     bottom: 16px;
@@ -326,9 +326,9 @@
     gap: 8px;
     z-index: 9;
     max-width: min(92vw, 340px);
-  }
-  
-  .toast {
+}
+
+.toast {
     background: var(--ink);
     color: #fff;
     padding: 10px 14px;
@@ -336,72 +336,74 @@
     border-left: 5px solid var(--sun);
     font-size: .9rem;
     box-shadow: 0 4px 14px rgba(0, 0, 0, .25);
-  }
-  
-  footer {
+}
+
+footer {
     text-align: center;
     color: #5b6f80;
     font-size: .85rem;
     padding: 0 5% 30px;
-  }
-  
-  @media (prefers-reduced-motion: no-preference) {
+}
+
+@media (prefers-reduced-motion: no-preference) {
     .toast {
-      animation: in .25s;
+        animation: in .25s;
     }
-  
+
     @keyframes in {
-      from {
-        transform: translateY(10px);
-        opacity: 0;
-      }
+        from {
+            transform: translateY(10px);
+            opacity: 0;
+        }
     }
-  }
-  
-  .map-label {
+}
+
+.map-label {
     background: transparent;
     border: none;
     box-shadow: none;
     font-weight: 700;
     color: var(--ink);
     text-shadow: 1px 1px 2px #fff;
-  }
-  
-  .conteudo-aba {
+}
+
+.conteudo-aba {
     display: none;
     animation: fadeInAba 0.4s;
-  }
-  
-  @keyframes fadeInAba {
+}
+
+@keyframes fadeInAba {
     from {
-      opacity: 0;
-      transform: scale(0.98);
+        opacity: 0;
+        transform: scale(0.98);
     }
+
     to {
-      opacity: 1;
-      transform: scale(1);
+        opacity: 1;
+        transform: scale(1);
     }
-  }
-  
-  .grid-home {
+}
+
+.grid-home {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
     gap: 20px;
     margin-top: 20px;
-  }
-  
-  @keyframes surgirCard {
+}
+
+@keyframes surgirCard {
     from {
-      opacity: 0;
-      transform: translateY(30px);
+        opacity: 0;
+        transform: translateY(30px);
     }
+
     to {
-      opacity: 1;
-      transform: translateY(0);
+        opacity: 1;
+        transform: translateY(0);
     }
-  }
-  
-  .card-home {
+}
+
+.card-home {
     background: var(--bg);
     border-radius: 12px;
     border: 1px solid var(--road);
@@ -409,63 +411,137 @@
     transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
     opacity: 0;
     animation: surgirCard 0.6s ease-out forwards;
-  }
-  
-  .card-home:hover {
+}
+
+.card-home:hover {
     border-color: var(--sea);
     box-shadow: 0 10px 25px rgba(31, 111, 139, .15);
     transform: translateY(-6px);
-  }
-  
-  .card-home.clicavel {
+}
+
+.card-home.clicavel {
     cursor: pointer;
-  }
-  
-  .img-servico {
+}
+
+.img-servico {
     width: 100%;
     height: 150px;
     object-fit: cover;
     transition: transform 0.5s ease;
-  }
-  
-  .card-home:hover .img-servico {
+}
+
+.card-home:hover .img-servico {
     transform: scale(1.08);
-  }
-  
-  .card-texto {
+}
+
+.card-texto {
     padding: 20px;
     background: var(--bg);
     position: relative;
-  }
-  
-  .card-texto h3 {
+}
+
+.card-texto h3 {
     color: var(--sea);
     margin-bottom: 8px;
     font-size: 1.15rem;
-  }
-  
-  .card-texto p {
+}
+
+.card-texto p {
     font-size: 0.9rem;
     color: #4b6073;
-  }
-  
-  .grid-home > .card-home:nth-child(1) { animation-delay: 0.0s; }
-  .grid-home > .card-home:nth-child(2) { animation-delay: 0.1s; }
-  .grid-home > .card-home:nth-child(3) { animation-delay: 0.2s; }
-  .grid-home > .card-home:nth-child(4) { animation-delay: 0.3s; }
-  .grid-home > .card-home:nth-child(5) { animation-delay: 0.4s; }
-  .grid-home > .card-home:nth-child(6) { animation-delay: 0.5s; }
-  .grid-home > .card-home:nth-child(7) { animation-delay: 0.6s; }
-  
-  .texto-institucional p {
+}
+
+.grid-home>.card-home:nth-child(1) {
+    animation-delay: 0.0s;
+}
+
+.grid-home>.card-home:nth-child(2) {
+    animation-delay: 0.1s;
+}
+
+.grid-home>.card-home:nth-child(3) {
+    animation-delay: 0.2s;
+}
+
+.grid-home>.card-home:nth-child(4) {
+    animation-delay: 0.3s;
+}
+
+.grid-home>.card-home:nth-child(5) {
+    animation-delay: 0.4s;
+}
+
+.grid-home>.card-home:nth-child(6) {
+    animation-delay: 0.5s;
+}
+
+.grid-home>.card-home:nth-child(7) {
+    animation-delay: 0.6s;
+}
+
+.texto-institucional p {
     margin-bottom: 15px;
     color: #4b6073;
     line-height: 1.6;
-  }
-  
-  .texto-institucional h3 {
+}
+
+.texto-institucional h3 {
     color: var(--sea);
     margin-top: 25px;
     margin-bottom: 10px;
     font-size: 1.2rem;
-  }
+}
+
+footer {
+    background-color: #f8f9fa;
+    padding: 20px;
+    text-align: center;
+    border-top: 1px solid #eaeaea;
+    margin-top: 40px;
+}
+
+.footer-navegacao {
+    margin-bottom: 15px;
+}
+
+.footer-navegacao a {
+    color: #333;
+    text-decoration: none;
+    margin: 0 10px;
+    font-weight: 500;
+}
+
+.footer-navegacao a:hover {
+    color: #007bff;
+    text-decoration: underline;
+}
+
+.footer-direitos p {
+    margin: 0;
+    font-size: 0.9rem;
+    color: #666;
+}
+
+body {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    /* Garante que o body ocupe pelo menos 100% da altura do ecrã/tela */
+    margin: 0;
+    /* Remove margens padrão que podem causar barra de rolagem indesejada */
+}
+
+main {
+    flex: 1;
+    /* Faz com que a tag main cresça e ocupe todo o espaço disponível, empurrando o footer para baixo */
+}
+
+footer {
+    /* Mantenha o estilo que já criámos, apenas certifique-se de que não há position: absolute ou fixed a menos que queira que ele flutue por cima do conteúdo */
+    background-color: #f8f9fa;
+    padding: 20px;
+    text-align: center;
+    border-top: 1px solid #eaeaea;
+    margin-top: auto;
+    /* Empurra o footer para o final caso o main não tenha o flex: 1 */
+}
