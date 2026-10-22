@@ -48,6 +48,8 @@ const dist = p => mapInstance.distance([centerLat, centerLng], [p.lat, p.lng]) /
 const score = p => 1000 * (1 - Math.min(dist(p) / 10, 1)) + p.r * 100 + (p.a ? 200 : 0);
 const STEPS = ['Requisitado', 'Localizado', 'Confirmado', 'Em Trânsito', 'Em Execução', 'Finalizado'];
 let cat = 'Todos', radius = 8, busy = false, order = null, timer = null;
+const catURL = new URLSearchParams(location.search).get('cat');
+if (catURL && P.some(p => p.c === catURL)) cat = catURL;
 
 function toast(t) {
   const d = document.createElement('div');
@@ -163,12 +165,8 @@ $('#btnLoc').onclick = () => {
   );
 };
 
-function irParaCategoria(categoriaSelecionada) {
-  cat = categoriaSelecionada;
-  renderChips();
-  renderAll();
-  const linksNav = document.querySelectorAll('.menu-principal a');
-  abrirAba('aba-pedido', linksNav[1]);
+function irParaCategoria(c) {
+  location.href = 'pedido.html?cat=' + encodeURIComponent(c);
 }
 
 function renderDestaques() {
